@@ -1,0 +1,312 @@
+# depslib dependency file v1.0
+1336672496 source:c:\users\walid\desktop\tp\conio .c
+	<stdio.h>
+	<stdlib.h>
+	<conio.h>
+	<math.h>
+	<string.h>
+	<windows.h>
+
+1383575096 source:c:\users\walid\desktop\tp\main.c
+	<stdio.h>
+	<stdlib.h>
+	"biblio_TP1.h"
+	"affichage.h"
+
+1383555054 c:\users\walid\desktop\tp\biblio_tp1.h
+	<dirent.h>
+
+1383575046 c:\users\walid\desktop\tp\affichage.h
+
+1383577780 source:c:\users\walid\desktop\tp\affichage.c
+	<stdio.h>
+	<conio.h>
+	"biblio_TP1.h"
+
+1383577181 source:c:\users\walid\desktop\tp\biblio_tp1.c
+	<stdio.h>
+	<stdlib.h>
+	<direct.h>
+	"biblio_TP1.h"
+
+1383578947 source:c:\users\walid\desktop\abismail_beyahmedkhernache_4\affichage.c
+	<stdio.h>
+	<conio.h>
+	"biblio_TP1.h"
+
+1383579112 c:\users\walid\desktop\abismail_beyahmedkhernache_4\biblio_tp1.h
+	<dirent.h>
+
+1336672496 source:c:\users\walid\desktop\abismail_beyahmedkhernache_4\conio .c
+	<stdio.h>
+	<stdlib.h>
+	<conio.h>
+	<math.h>
+	<string.h>
+	<windows.h>
+
+1383575096 source:c:\users\walid\desktop\abismail_beyahmedkhernache_4\main.c
+	<stdio.h>
+	<stdlib.h>
+	"biblio_TP1.h"
+	"affichage.h"
+
+1383575046 c:\users\walid\desktop\abismail_beyahmedkhernache_4\affichage.h
+
+1383579161 source:c:\users\walid\desktop\abismail_beyahmedkhernache_4\biblio_tp1.c
+	<stdio.h>
+	<stdlib.h>
+	<direct.h>
+	"biblio_TP1.h"
+
+1383579162 source:h:\abismail_beyahmedkhernache_4\biblio_tp1.c
+	<stdio.h>
+	<stdlib.h>
+	<direct.h>
+	"biblio_TP1.h"
+
+1383579114 h:\abismail_beyahmedkhernache_4\biblio_tp1.h
+	<dirent.h>
+
+1336672496 source:h:\abismail_beyahmedkhernache_4\conio .c
+	<stdio.h>
+	<stdlib.h>
+	<conio.h>
+	<math.h>
+	<string.h>
+	<windows.h>
+
+1383575098 source:h:\abismail_beyahmedkhernache_4\main.c
+	<stdio.h>
+	<stdlib.h>
+	"biblio_TP1.h"
+	"affichage.h"
+
+1383575048 h:\abismail_beyahmedkhernache_4\affichage.h
+
+1383578948 source:h:\abismail_beyahmedkhernache_4\affichage.c
+	<stdio.h>
+	<conio.h>
+	"biblio_TP1.h"
+
+1383656855 source:c:\users\mohammed_bey\desktop\test_tp\abismail_beyahmedkhernache_4\biblio_tp1.c
+	<stdio.h>
+	<stdlib.h>
+	<direct.h>
+	"affichage.h"
+	"biblio_TP1.h"
+
+1383656173 c:\users\mohammed_bey\desktop\test_tp\abismail_beyahmedkhernache_4\biblio_tp1.h
+	<dirent.h>
+
+1336672496 source:c:\users\mohammed_bey\desktop\test_tp\abismail_beyahmedkhernache_4\conio .c
+	<stdio.h>
+	<stdlib.h>
+	<conio.h>
+	<math.h>
+	<string.h>
+	<windows.h>
+
+1383575098 source:c:\users\mohammed_bey\desktop\test_tp\abismail_beyahmedkhernache_4\main.c
+	<stdio.h>
+	<stdlib.h>
+	"biblio_TP1.h"
+	"affichage.h"
+
+1383575048 c:\users\mohammed_bey\desktop\test_tp\abismail_beyahmedkhernache_4\affichage.h
+
+1383656426 source:c:\users\mohammed_bey\desktop\test_tp\abismail_beyahmedkhernache_4\affichage.c
+	<stdio.h>
+	<conio.h>
+	"biblio_TP1.h"
+
+1383664840 source:c:\users\mohammed_bey\desktop\abismail_beyahmedkhernache_4\biblio_tp1.c
+	<stdio.h>
+	<stdlib.h>
+	<direct.h>
+	"affichage.h"
+	"biblio_TP1.h"
+
+1383664655 c:\users\mohammed_bey\desktop\abismail_beyahmedkhernache_4\affichage.h
+
+1383664569 c:\users\mohammed_bey\desktop\abismail_beyahmedkhernache_4\biblio_tp1.h
+	<dirent.h>
+
+1336672496 source:c:\users\mohammed_bey\desktop\abismail_beyahmedkhernache_4\conio .c
+	<stdio.h>
+	<stdlib.h>
+	<conio.h>
+	<math.h>
+	<string.h>
+	<windows.h>
+
+1383575098 source:c:\users\mohammed_bey\desktop\abismail_beyahmedkhernache_4\main.c
+	<stdio.h>
+	<stdlib.h>
+	"biblio_TP1.h"
+	"affichage.h"
+
+1383664461 source:c:\users\mohammed_bey\desktop\abismail_beyahmedkhernache_4\affichage.c
+	<stdio.h>
+	<conio.h>
+	"biblio_TP1.h"
+
+1383821341 source:g:\2cpi\tps-et-projets\algo\abismail_beyahmedkhernache_4\biblio_tp1.c
+	<stdio.h>
+	<stdlib.h>
+	<direct.h>
+	"affichage.h"
+	"biblio_TP1.h"
+
+1383664655 g:\2cpi\tps-et-projets\algo\abismail_beyahmedkhernache_4\affichage.h
+
+1383821170 g:\2cpi\tps-et-projets\algo\abismail_beyahmedkhernache_4\biblio_tp1.h
+	<dirent.h>
+
+1336672496 source:g:\2cpi\tps-et-projets\algo\abismail_beyahmedkhernache_4\conio .c
+	<stdio.h>
+	<stdlib.h>
+	<conio.h>
+	<math.h>
+	<string.h>
+	<windows.h>
+
+1383575098 source:g:\2cpi\tps-et-projets\algo\abismail_beyahmedkhernache_4\main.c
+	<stdio.h>
+	<stdlib.h>
+	"biblio_TP1.h"
+	"affichage.h"
+
+1383820939 source:g:\2cpi\tps-et-projets\algo\abismail_beyahmedkhernache_4\affichage.c
+	<stdio.h>
+	<conio.h>
+	"biblio_TP1.h"
+
+1385117649 source:g:\2cpi\tps-et-projets\algo\abismail_beyahmedkhernache_4_finale\biblio_tp1.c
+	<stdio.h>
+	<stdlib.h>
+	<direct.h>
+	"affichage.h"
+	"biblio_TP1.h"
+
+1383664655 g:\2cpi\tps-et-projets\algo\abismail_beyahmedkhernache_4_finale\affichage.h
+
+1384980903 g:\2cpi\tps-et-projets\algo\abismail_beyahmedkhernache_4_finale\biblio_tp1.h
+	<dirent.h>
+
+1336672496 source:g:\2cpi\tps-et-projets\algo\abismail_beyahmedkhernache_4_finale\conio .c
+	<stdio.h>
+	<stdlib.h>
+	<conio.h>
+	<math.h>
+	<string.h>
+	<windows.h>
+
+1383575098 source:g:\2cpi\tps-et-projets\algo\abismail_beyahmedkhernache_4_finale\main.c
+	<stdio.h>
+	<stdlib.h>
+	"biblio_TP1.h"
+	"affichage.h"
+
+1385117856 source:g:\2cpi\tps-et-projets\algo\abismail_beyahmedkhernache_4_finale\affichage.c
+	<stdio.h>
+	<conio.h>
+	<time.h>
+	"biblio_TP1.h"
+
+1385236144 source:g:\2cpi\tps-et-projets\algo\abismail_beyahmedkhernache_4_tp1\biblio_tp1.c
+	<stdio.h>
+	<stdlib.h>
+	<direct.h>
+	"affichage.h"
+	"biblio_TP1.h"
+
+1383664655 g:\2cpi\tps-et-projets\algo\abismail_beyahmedkhernache_4_tp1\affichage.h
+
+1384980903 g:\2cpi\tps-et-projets\algo\abismail_beyahmedkhernache_4_tp1\biblio_tp1.h
+	<dirent.h>
+
+1336672496 source:g:\2cpi\tps-et-projets\algo\abismail_beyahmedkhernache_4_tp1\conio .c
+	<stdio.h>
+	<stdlib.h>
+	<conio.h>
+	<math.h>
+	<string.h>
+	<windows.h>
+
+1383575098 source:g:\2cpi\tps-et-projets\algo\abismail_beyahmedkhernache_4_tp1\main.c
+	<stdio.h>
+	<stdlib.h>
+	"biblio_TP1.h"
+	"affichage.h"
+
+1385235967 source:g:\2cpi\tps-et-projets\algo\abismail_beyahmedkhernache_4_tp1\affichage.c
+	<stdio.h>
+	<conio.h>
+	<time.h>
+	"biblio_TP1.h"
+
+1391083180 source:g:\2cpi\tps-et-projets\algo\tp1\abismail_beyahmedkhernache_4_tp1\biblio_tp1.c
+	<stdio.h>
+	<stdlib.h>
+	<direct.h>
+	"affichage.h"
+	"biblio_TP1.h"
+
+1383664655 g:\2cpi\tps-et-projets\algo\tp1\abismail_beyahmedkhernache_4_tp1\affichage.h
+
+1391082057 g:\2cpi\tps-et-projets\algo\tp1\abismail_beyahmedkhernache_4_tp1\biblio_tp1.h
+	<dirent.h>
+
+1336672496 source:g:\2cpi\tps-et-projets\algo\tp1\abismail_beyahmedkhernache_4_tp1\conio .c
+	<stdio.h>
+	<stdlib.h>
+	<conio.h>
+	<math.h>
+	<string.h>
+	<windows.h>
+
+1389302462 source:g:\2cpi\tps-et-projets\algo\tp1\abismail_beyahmedkhernache_4_tp1\main.c
+	<stdio.h>
+	<stdlib.h>
+	"biblio_TP1.h"
+	"affichage.h"
+
+1385235967 source:g:\2cpi\tps-et-projets\algo\tp1\abismail_beyahmedkhernache_4_tp1\affichage.c
+	<stdio.h>
+	<conio.h>
+	<time.h>
+	"biblio_TP1.h"
+
+1385235967 source:g:\esi\cycle1\2cpi\tps-et-projets\algo\tp1\abismail_beyahmedkhernache_4_tp1\affichage.c
+	<stdio.h>
+	<conio.h>
+	<time.h>
+	"biblio_TP1.h"
+
+1391082057 g:\esi\cycle1\2cpi\tps-et-projets\algo\tp1\abismail_beyahmedkhernache_4_tp1\biblio_tp1.h
+	<dirent.h>
+
+1336672496 source:g:\esi\cycle1\2cpi\tps-et-projets\algo\tp1\abismail_beyahmedkhernache_4_tp1\conio .c
+	<stdio.h>
+	<stdlib.h>
+	<conio.h>
+	<math.h>
+	<string.h>
+	<windows.h>
+
+1389302462 source:g:\esi\cycle1\2cpi\tps-et-projets\algo\tp1\abismail_beyahmedkhernache_4_tp1\main.c
+	<stdio.h>
+	<stdlib.h>
+	"biblio_TP1.h"
+	"affichage.h"
+
+1383664655 g:\esi\cycle1\2cpi\tps-et-projets\algo\tp1\abismail_beyahmedkhernache_4_tp1\affichage.h
+
+1418029427 source:g:\esi\cycle1\2cpi\tps-et-projets\algo\tp1\abismail_beyahmedkhernache_4_tp1\biblio_tp1.c
+	<stdio.h>
+	<stdlib.h>
+	<direct.h>
+	"affichage.h"
+	"biblio_TP1.h"
+

@@ -1,0 +1,894 @@
+C’est  dans  le  cadre  de  Travaux  d’Etudes  et  de  Recherches  pour  l’Université  de 
+Strasbourg qu’a été étudié un nouvel algorithme de tri, appelé « tri à bulles gelées ». 
+Afin de comprendre les mécanismes de ce nouvel algorithme, il fallait le décrire avec plus de 
+précision. Pour se donner plusieurs idées de cet algorithme, il est intéressant de le développer 
+de différentes façons, par exemple en itératif ou en récursif. 
+La suite de l’étude consistait à déterminer la complexité de cet algorithme en s’appuyant sur 
+la complexité d’autres algorithmes étant utilisés pour la construction du « tri à bulles gelées ». 
+Dans le but de trouver un intérêt au tri flou, il est intéressant d’étudier d’autres algorithmes de 
+tri en version floue et même d’établir une liste decomparaisons entre tous ces algorithmes. 
+Ceci nous amènera à penser à l’utilité du tri flou pour la recherche.
+L'algorithme, dit du "tri à bulles gelées", utilisecomme base la méthode du tri à bulles, 
+en la modifiant afin que, d'une part, deux valeurs ne soient échangées que si leur écart est 
+supérieur  à  une  certaine  tolérance  t  (une  valeur  choisie  tel  que  si  a  et  b  sont  ordonnés, 
+l’ordre  ne  sera  assuré  que  si  a+t  et  b  sont  aussi  ordonnés),  et  d'autre  part  qu'une  bulle 
+puisse avoir une taille supérieure à 1. 
+Dans le tri à bulles standard, la comparaison se fait entre l’élément de la bulle avec 
+l’élément suivant. Si l’élément de la bulle est plus grand, alors on fait une permutation, 
+sinon l’élément suivant devient la bulle. 
+Dans  un  tri  flou,  l’algorithme  utilisé  comprend  une certaine  tolérance  t.  Soit  S  la 
+relation  d’ordre  considérée,  si  on  a  S(a  ,  b),  on  n’assurera  que  a  et  b  sont  dans  l’ordre 
+après le tri que si on à également S(a+t , b). 
+Afin de rendre l’algorithme du tri à bulles plus rapide, si l’élément après la bulle est 
+égal à l’élément de la bulle, on augmente la taillede la bulle.
+L'algorithme de tri rapide est algorithme de type dichotomique. Son principe consiste à 
+séparer l'ensemble des éléments en deux parties. Pour effectuer la séparation, une valeur 
+pivot est choisie. Les valeurs sont réparties en deux ensembles suivant qu'elles sont plus 
+grandes ou plus petites que le pivot. Ensuite, les  deux ensembles sont triés séparément, 
+suivant  la  même  méthode.  L'algorithme,  est  récursif,  mais  il  n'est  pas  nécessaire  de 
+fusionner  les  deux  ensembles.  Le  résultat  du  tri  est  égal  au  tri  de  l'ensemble  dont  les 
+valeurs sont inférieures au pivot concaténé à l'ensemble des valeurs supérieures au pivot, 
+ce dernier étant entre les deux ensembles.
+Le tri fusion est construit suivant la stratégie  « diviser pour régner ». Le principe de 
+base de la stratégie « diviser pour régner » est que pour résoudre un gros problème, il est 
+souvent plus facile de le diviser en petits problèmes élémentaires. Une fois chaque petit 
+problème  résolu,  il  n'y  a  plus  qu'à  combiner  les  différentes  solutions  pour  résoudre  le 
+problème global. La méthode « diviser pour régner »est tout à fait applicable au problème 
+de tri : plutôt que de trier le tableau complet, ilest préférable de trier deux sous tableaux 
+de taille égale, puis de fusionner les résultats. 
+L'algorithme proposé est récursif. En effet, les deux sous tableaux seront eux même 
+triés à l'aide de l'algorithme de tri fusion. Un tableau ne comportant qu'un seul élément 
+sera considéré comme trié : c'est la condition d'arrêt.
+Le tri par sélection est l'un des tris les plus instinctifs. Le principe est que pour classer 
+n valeurs, il faut rechercher la plus grande valeuret la placer en fin de liste, puis la plus 
+grande valeur dans les valeurs restante et la placer en avant dernière position et ainsi de 
+suite... 
+Considérons  un  tableau  à  n  éléments.  Pour  effectuer le  tri  par  sélection,  il  faut 
+rechercher dans ce tableau la position du plus grand élément. Le plus grand élément est 
+alors échangé avec le dernier  élément du tableau. Ensuite, on réitère l'algorithme sur le 
+tableau  constitué  par  les  (n-p)  premiers  éléments  où  p  est  le  nombre  de  fois  où 
+l'algorithme a été itéré. L'algorithme se termine quand p=(n-1), c'est à dire quand il n'y a 
+plus qu'une valeur à sélectionner, celle ci est alors la plus petite valeur du tableau. 
+La relative simplicité de cet algorithme fait qu'onlui attribut le qualificatif 
+d'algorithme naïf. Cela signifie que même si l'algorithme est correct, il est trop simple 
+pour être réellement efficace. En effet, la complexité, en nombre de comparaisons, est 
+analogue à la complexité du tri bulle optimisé. A la première itération, sont effectuées 
+(n-1) comparaisons. A la pième
+itération, sont effectuées (n-p) comparaisons. Soit une 
+complexité en O(n²) dont le calcul exact est donné par la formule suivante. 
+En  2004-2005,  un  TER  a  été  proposé,  s’intitulant  « Organisation  d'un  répertoire 
+d'images »  (manière  d'organiser  les  images  d'un  répertoire  et  de  les  regrouper  par 
+similarité). Celui-ci s’appuie entre autre sur un tri partiel. Il serait intéressant pour obtenir 
+des résultats convaincants, d’appliquer le « tri à bulles gelées » sur cet exemple. Le choix 
+de la tolérance dépendrait bien évidemment de l’attente de l’utilisateur. La tolérance serait 
+liée  à  la  similarité :  plus  la  tolérance  est  grande moins  forte  est  la  similarité  entre  les
+Les tris les plus performants qui existent tels quele tri rapide et le tri fusion, ne vont 
+pas dépendre de la diversité et de ce fait pour unediversité très grande des éléments à trier, 
+notre  nouvel  algorithme  ce  trouve  être  insatisfaisant.  Mais  si  l’on  regarde  les  résultats  par 
+rapport  au  nombre  d’entrées,  on  remarque  que  notre  algorithme,  le  « tri  à  bulles  gelées » 
+affiche d’excellentes performances. Donc si l’on peut se permettre un tri partiel, dans le cas de 
+grands conteneurs d’éléments à faible diversité, ilest préférable pour des gains de temps non 
+négligeables d’utiliser le nouvel algorithme étudié. On notera aussi que la tolérance a moins 
+de poids sur la complexité du « tri à bulles gelées» que sur les autres algorithmes en version 
+floue étudiés. 
+Une idée d’étude et de recherche dans la théorie des graphes, serait l’utilisation d’un 
+tri flou permettant une approche de la résolution de problèmes NP-complets, tel que le tri des 
+sommets d’un graphe pour la recherche d’un cycle hamiltonien
+données entre elles, afin de déterminer la fonction d’une protéine à partir de sa structure
+chimique ou physique.
+Ces méthodes diffèrent selon la représentation utilisée. Les méthodes de comparaison
+de représentation chimiques sont efficaces lorsque la similarité entre les protéines se
+reflète au niveau de leurs séquences, par exemple lorsque les protéines sont proches évolutivement. La séquence d’une protéine pouvant se déduire de la séquence d’ADN du gène
+correspondant, ce type d’analyse profite de l’accumulation de données en provenance des
+projets de séquençage de génomes complets.
+Le travail réalisé durant cette thèse relève d’une deuxième approche, qui consiste à
+comparer les structures tridimensionnelles (3D) des protéines. La structure 3D d’une protéine étant fortement liée à sa fonction biologique, ce type d’approche permet de détecter
+des similarités plus faibles, non décelables au niveau de la séquence.
+Le nombre de structures de protéines déterminées expérimentalement est lui aussi en
+constante augmentation. En 1960, une première structure était déterminée par diffraction
+de rayons X [Kendrew et al., 1960]. Actuellement, la Protein Data Bank recense plus de
+4500 structures de protéines [Bernstein et al., 1977]. Grâce au perfectionnement des
+méthodes de détermination par diffraction, et à l’utilisation de nouvelles méthodes comme
+la résonnance magnétique nucléaire, le nombre de nouvelles structures publiées chaque
+année est de l’ordre de 500. Si les premières comparaisons étaient effectuées visuellement,
+un tel volume de données nécessite désormais la mise en œuvre d’outils informatiques
+performants.
+Un des problèmes auxquels je me suis intéressé durant ce travail est la détection de
+sous-structures communes à plusieurs protéines, c’est-à-dire l’identification au sein de ces
+protéines de sous-ensembles d’atomes ayant les mêmes positions relatives dans l’espace.
+Dans son principe, cette méthode d’analyse est semblable à la recherche de facteurs communs à un ensemble de séquences, ou plus généralement à la recherche de régularités dans
+des séquences. La structure tridimensionnelle d’une protéine, et plus généralement d’une
+molécule, peut être représentée par un ensemble de points dans l’espace à trois dimensions
+. Il suffit en effet d’associer à chaque atome un point dont les coordonnées sont celles
+du “centre” de l’atome. On se ramène ainsi au problème de la comparaison d’ensembles
+de points dans un espace euclidien, problème très étudié dans le domaine de la vision artificielle et de l’analyse d’images.
+On peut utiliser la théorie des champs de force pour décrire une molécule. On calcule
+un potentiel dérivant d’un champ de force permettant de mesurer en chaque point l’interaction de la molécule avec son environnement. L’étude et la comparaison des potentiels
+d’interaction de plusieurs molécules permet alors de détecter certains types de similarités
+fondées sur des critères d’énergie, et non plus uniquement sur la disposition spatiale des
+atomes formant la molécule. Ce problème est beaucoup moins étudié que le précédent,
+mais nous verrons qu’il peut lui aussi se ramener à la comparaison géométrique d’ensembles de points dans l’espace, en décrivant la forme du potentiel d’interaction par un
+ensemble de points caractéristiques.
+Un troisième problème lié à la structure des protéines concerne l’analyse des différentes conformations d’un même polypeptide. En effet, du fait de la possibilité de rotation
+autour de certaines liaisons, des mouvements internes faisant intervenir plusieurs atomes
+peuvent se produire. Certains de ces mouvements jouent un rôle très important dans le
+comparaison de plusieurs conformations d’une même protéine, afin de déterminer les
+sous-structures conservées, c’est-à-dire les sous-ensembles d’atomes dont les positions
+relatives restent identiques dans les différentes conformations, ou inversement d’accéder
+aux zones “mobiles” de la molécule.
+Ce texte est divisé en cinq chapitres. Le premier est une introduction générale aux protéines. Y sont présentées les différentes façons de décrire les protéines, ainsi que leurs
+principales caractéristiques. Ce chapitre n’a bien sûr pas pour but d’être exhaustif, mais
+plutôt de donner une motivation “biologique” aux travaux que j’ai effectués, en décrivant
+les différents problèmes abordés suivant le point de vue d’un utilisateur.
+Le second chapitre est consacré à la présentation de différentes méthodes permettant
+de comparer deux ensembles de points. On s’attachera dans un premier temps à donner un
+énoncé précis et rigoureux des problèmes qui nous intéressent. Ces énoncés sont fondés
+sur une définition de la similarité géométrique entre deux ensembles de points dans un
+espace euclidien. Trois types de définitions sont proposés, conduisant à des méthodes de
+résolution différentes. On étudiera aussi le nombre de solutions des problèmes considérés,
+et l’on verra que ce nombre dépend lui aussi de la définition de similarité choisie. Deux
+problèmes sont considérés: la comparaison globale, où l’on cherche à déterminer si deux
+ensembles sont similaires, et la comparaison locale, où l’on cherche des sous-ensembles
+similaires au sein des deux ensembles de départ.
+Dans le troisième chapitre, je présenterai des méthodes développées spécifiquement
+pour la comparaison de protéines. De portée moins générale que les algorithmes présentés
+au chapitre précédent, elles introduisent de nouvelles contraintes dans les énoncés des problèmes, ou bien utilisent une description de la structure protéique plus compacte mais
+moins précise qu’une description par un ensemble de points. Ces méthodes de comparaison reposent le plus souvent sur des définitions beaucoup moins formelles que celle
+employées au chapitre précédent, et font intervenir certains paramètres dont les valeurs
+sont déterminées de façon empirique.
+Les deux derniers chapitres sont consacrés au travaux que j’ai effectués durant cette
+thèse. Dans le chapitre 4, je présenterai un nouvel algorithme de recherche de sous-ensembles communs à deux ensembles de points dans un espace euclidien, ainsi que son extension à la comparaison multiple, c’est-à-dire la comparaison simultanée de plus de deux
+ensembles [Escalier et al., 1997]. On se base sur le formalisme introduit au chapitre 2, qui
+est généralisé afin de pouvoir s’appliquer au cas de la comparaison multiple. Cette nouvelle méthode est comparée à certains algorithmes présentés dans le chapitre 2, et quelques exemples d’application portant sur la comparaison de structures 3D de protéines
+seront détaillés. On décrira aussi une application à la comparaison des potentiels d’interaction, basée sur une nouvelle description de ces potentiels par un ensemble de points caractéristiques.
+Enfin, le cinquième chapitre présente une nouvelle méthode d’analyse des différentes
+conformations d’un même ensemble de points [Escalier et Viari, 1997]. On se place
+d’emblée dans un cadre multiple, où l’on dispose de plus de deux conformations. Je
+m’attacherai tout d’abord à donner une définition rigoureuse d’un sous-ensemble conservé
+dans le cas multiple, ce cas étant à ma connaissance assez peu étudié. Je présenterai
+ensuite deux versions d’un algorithme de résolution, ainsi que des exemples d’application.
+C’est  dans  le  cadre  de  Travaux  d’Etudes  et  de  Recherches  pour  l’Université  de 
+Strasbourg qu’a été étudié un nouvel algorithme de tri, appelé « tri à bulles gelées ». 
+Afin de comprendre les mécanismes de ce nouvel algorithme, il fallait le décrire avec plus de 
+précision. Pour se donner plusieurs idées de cet algorithme, il est intéressant de le développer 
+de différentes façons, par exemple en itératif ou en récursif. 
+La suite de l’étude consistait à déterminer la complexité de cet algorithme en s’appuyant sur 
+la complexité d’autres algorithmes étant utilisés pour la construction du « tri à bulles gelées ». 
+Dans le but de trouver un intérêt au tri flou, il est intéressant d’étudier d’autres algorithmes de 
+tri en version floue et même d’établir une liste decomparaisons entre tous ces algorithmes. 
+Ceci nous amènera à penser à l’utilité du tri flou pour la recherche.
+L'algorithme, dit du "tri à bulles gelées", utilisecomme base la méthode du tri à bulles, 
+en la modifiant afin que, d'une part, deux valeurs ne soient échangées que si leur écart est 
+supérieur  à  une  certaine  tolérance  t  (une  valeur  choisie  tel  que  si  a  et  b  sont  ordonnés, 
+l’ordre  ne  sera  assuré  que  si  a+t  et  b  sont  aussi  ordonnés),  et  d'autre  part  qu'une  bulle 
+puisse avoir une taille supérieure à 1. 
+Dans le tri à bulles standard, la comparaison se fait entre l’élément de la bulle avec 
+l’élément suivant. Si l’élément de la bulle est plus grand, alors on fait une permutation, 
+sinon l’élément suivant devient la bulle. 
+Dans  un  tri  flou,  l’algorithme  utilisé  comprend  une certaine  tolérance  t.  Soit  S  la 
+relation  d’ordre  considérée,  si  on  a  S(a  ,  b),  on  n’assurera  que  a  et  b  sont  dans  l’ordre 
+après le tri que si on à également S(a+t , b). 
+Afin de rendre l’algorithme du tri à bulles plus rapide, si l’élément après la bulle est 
+égal à l’élément de la bulle, on augmente la taillede la bulle.
+L'algorithme de tri rapide est algorithme de type dichotomique. Son principe consiste à 
+séparer l'ensemble des éléments en deux parties. Pour effectuer la séparation, une valeur 
+pivot est choisie. Les valeurs sont réparties en deux ensembles suivant qu'elles sont plus 
+grandes ou plus petites que le pivot. Ensuite, les  deux ensembles sont triés séparément, 
+suivant  la  même  méthode.  L'algorithme,  est  récursif,  mais  il  n'est  pas  nécessaire  de 
+fusionner  les  deux  ensembles.  Le  résultat  du  tri  est  égal  au  tri  de  l'ensemble  dont  les 
+valeurs sont inférieures au pivot concaténé à l'ensemble des valeurs supérieures au pivot, 
+ce dernier étant entre les deux ensembles.
+Le tri fusion est construit suivant la stratégie  « diviser pour régner ». Le principe de 
+base de la stratégie « diviser pour régner » est que pour résoudre un gros problème, il est 
+souvent plus facile de le diviser en petits problèmes élémentaires. Une fois chaque petit 
+problème  résolu,  il  n'y  a  plus  qu'à  combiner  les  différentes  solutions  pour  résoudre  le 
+problème global. La méthode « diviser pour régner »est tout à fait applicable au problème 
+de tri : plutôt que de trier le tableau complet, ilest préférable de trier deux sous tableaux 
+de taille égale, puis de fusionner les résultats. 
+L'algorithme proposé est récursif. En effet, les deux sous tableaux seront eux même 
+triés à l'aide de l'algorithme de tri fusion. Un tableau ne comportant qu'un seul élément 
+sera considéré comme trié : c'est la condition d'arrêt.
+Le tri par sélection est l'un des tris les plus instinctifs. Le principe est que pour classer 
+n valeurs, il faut rechercher la plus grande valeuret la placer en fin de liste, puis la plus 
+grande valeur dans les valeurs restante et la placer en avant dernière position et ainsi de 
+suite... 
+Considérons  un  tableau  à  n  éléments.  Pour  effectuer le  tri  par  sélection,  il  faut 
+rechercher dans ce tableau la position du plus grand élément. Le plus grand élément est 
+alors échangé avec le dernier  élément du tableau. Ensuite, on réitère l'algorithme sur le 
+tableau  constitué  par  les  (n-p)  premiers  éléments  où  p  est  le  nombre  de  fois  où 
+l'algorithme a été itéré. L'algorithme se termine quand p=(n-1), c'est à dire quand il n'y a 
+plus qu'une valeur à sélectionner, celle ci est alors la plus petite valeur du tableau. 
+La relative simplicité de cet algorithme fait qu'onlui attribut le qualificatif 
+d'algorithme naïf. Cela signifie que même si l'algorithme est correct, il est trop simple 
+pour être réellement efficace. En effet, la complexité, en nombre de comparaisons, est 
+analogue à la complexité du tri bulle optimisé. A la première itération, sont effectuées 
+(n-1) comparaisons. A la pième
+itération, sont effectuées (n-p) comparaisons. Soit une 
+complexité en O(n²) dont le calcul exact est donné par la formule suivante. 
+En  2004-2005,  un  TER  a  été  proposé,  s’intitulant  « Organisation  d'un  répertoire 
+d'images »  (manière  d'organiser  les  images  d'un  répertoire  et  de  les  regrouper  par 
+similarité). Celui-ci s’appuie entre autre sur un tri partiel. Il serait intéressant pour obtenir 
+des résultats convaincants, d’appliquer le « tri à bulles gelées » sur cet exemple. Le choix 
+de la tolérance dépendrait bien évidemment de l’attente de l’utilisateur. La tolérance serait 
+liée  à  la  similarité :  plus  la  tolérance  est  grande moins  forte  est  la  similarité  entre  les
+Les tris les plus performants qui existent tels quele tri rapide et le tri fusion, ne vont 
+pas dépendre de la diversité et de ce fait pour unediversité très grande des éléments à trier, 
+notre  nouvel  algorithme  ce  trouve  être  insatisfaisant.  Mais  si  l’on  regarde  les  résultats  par 
+rapport  au  nombre  d’entrées,  on  remarque  que  notre  algorithme,  le  « tri  à  bulles  gelées » 
+affiche d’excellentes performances. Donc si l’on peut se permettre un tri partiel, dans le cas de 
+grands conteneurs d’éléments à faible diversité, ilest préférable pour des gains de temps non 
+négligeables d’utiliser le nouvel algorithme étudié. On notera aussi que la tolérance a moins 
+de poids sur la complexité du « tri à bulles gelées» que sur les autres algorithmes en version 
+floue étudiés. 
+Une idée d’étude et de recherche dans la théorie des graphes, serait l’utilisation d’un 
+tri flou permettant une approche de la résolution de problèmes NP-complets, tel que le tri des 
+sommets d’un graphe pour la recherche d’un cycle hamiltonien
+données entre elles, afin de déterminer la fonction d’une protéine à partir de sa structure
+chimique ou physique.
+Ces méthodes diffèrent selon la représentation utilisée. Les méthodes de comparaison
+de représentation chimiques sont efficaces lorsque la similarité entre les protéines se
+reflète au niveau de leurs séquences, par exemple lorsque les protéines sont proches évolutivement. La séquence d’une protéine pouvant se déduire de la séquence d’ADN du gène
+correspondant, ce type d’analyse profite de l’accumulation de données en provenance des
+projets de séquençage de génomes complets.
+Le travail réalisé durant cette thèse relève d’une deuxième approche, qui consiste à
+comparer les structures tridimensionnelles (3D) des protéines. La structure 3D d’une protéine étant fortement liée à sa fonction biologique, ce type d’approche permet de détecter
+des similarités plus faibles, non décelables au niveau de la séquence.
+Le nombre de structures de protéines déterminées expérimentalement est lui aussi en
+constante augmentation. En 1960, une première structure était déterminée par diffraction
+de rayons X [Kendrew et al., 1960]. Actuellement, la Protein Data Bank recense plus de
+4500 structures de protéines [Bernstein et al., 1977]. Grâce au perfectionnement des
+méthodes de détermination par diffraction, et à l’utilisation de nouvelles méthodes comme
+la résonnance magnétique nucléaire, le nombre de nouvelles structures publiées chaque
+année est de l’ordre de 500. Si les premières comparaisons étaient effectuées visuellement,
+un tel volume de données nécessite désormais la mise en œuvre d’outils informatiques
+performants.
+Un des problèmes auxquels je me suis intéressé durant ce travail est la détection de
+sous-structures communes à plusieurs protéines, c’est-à-dire l’identification au sein de ces
+protéines de sous-ensembles d’atomes ayant les mêmes positions relatives dans l’espace.
+Dans son principe, cette méthode d’analyse est semblable à la recherche de facteurs communs à un ensemble de séquences, ou plus généralement à la recherche de régularités dans
+des séquences. La structure tridimensionnelle d’une protéine, et plus généralement d’une
+molécule, peut être représentée par un ensemble de points dans l’espace à trois dimensions
+. Il suffit en effet d’associer à chaque atome un point dont les coordonnées sont celles
+du “centre” de l’atome. On se ramène ainsi au problème de la comparaison d’ensembles
+de points dans un espace euclidien, problème très étudié dans le domaine de la vision artificielle et de l’analyse d’images.
+On peut utiliser la théorie des champs de force pour décrire une molécule. On calcule
+un potentiel dérivant d’un champ de force permettant de mesurer en chaque point l’interaction de la molécule avec son environnement. L’étude et la comparaison des potentiels
+d’interaction de plusieurs molécules permet alors de détecter certains types de similarités
+fondées sur des critères d’énergie, et non plus uniquement sur la disposition spatiale des
+atomes formant la molécule. Ce problème est beaucoup moins étudié que le précédent,
+mais nous verrons qu’il peut lui aussi se ramener à la comparaison géométrique d’ensembles de points dans l’espace, en décrivant la forme du potentiel d’interaction par un
+ensemble de points caractéristiques.
+Un troisième problème lié à la structure des protéines concerne l’analyse des différentes conformations d’un même polypeptide. En effet, du fait de la possibilité de rotation
+autour de certaines liaisons, des mouvements internes faisant intervenir plusieurs atomes
+peuvent se produire. Certains de ces mouvements jouent un rôle très important dans le
+comparaison de plusieurs conformations d’une même protéine, afin de déterminer les
+sous-structures conservées, c’est-à-dire les sous-ensembles d’atomes dont les positions
+relatives restent identiques dans les différentes conformations, ou inversement d’accéder
+aux zones “mobiles” de la molécule.
+Ce texte est divisé en cinq chapitres. Le premier est une introduction générale aux protéines. Y sont présentées les différentes façons de décrire les protéines, ainsi que leurs
+principales caractéristiques. Ce chapitre n’a bien sûr pas pour but d’être exhaustif, mais
+plutôt de donner une motivation “biologique” aux travaux que j’ai effectués, en décrivant
+les différents problèmes abordés suivant le point de vue d’un utilisateur.
+Le second chapitre est consacré à la présentation de différentes méthodes permettant
+de comparer deux ensembles de points. On s’attachera dans un premier temps à donner un
+énoncé précis et rigoureux des problèmes qui nous intéressent. Ces énoncés sont fondés
+sur une définition de la similarité géométrique entre deux ensembles de points dans un
+espace euclidien. Trois types de définitions sont proposés, conduisant à des méthodes de
+résolution différentes. On étudiera aussi le nombre de solutions des problèmes considérés,
+et l’on verra que ce nombre dépend lui aussi de la définition de similarité choisie. Deux
+problèmes sont considérés: la comparaison globale, où l’on cherche à déterminer si deux
+ensembles sont similaires, et la comparaison locale, où l’on cherche des sous-ensembles
+similaires au sein des deux ensembles de départ.
+Dans le troisième chapitre, je présenterai des méthodes développées spécifiquement
+pour la comparaison de protéines. De portée moins générale que les algorithmes présentés
+au chapitre précédent, elles introduisent de nouvelles contraintes dans les énoncés des problèmes, ou bien utilisent une description de la structure protéique plus compacte mais
+moins précise qu’une description par un ensemble de points. Ces méthodes de comparaison reposent le plus souvent sur des définitions beaucoup moins formelles que celle
+employées au chapitre précédent, et font intervenir certains paramètres dont les valeurs
+sont déterminées de façon empirique.
+Les deux derniers chapitres sont consacrés au travaux que j’ai effectués durant cette
+thèse. Dans le chapitre 4, je présenterai un nouvel algorithme de recherche de sous-ensembles communs à deux ensembles de points dans un espace euclidien, ainsi que son extension à la comparaison multiple, c’est-à-dire la comparaison simultanée de plus de deux
+ensembles [Escalier et al., 1997]. On se base sur le formalisme introduit au chapitre 2, qui
+est généralisé afin de pouvoir s’appliquer au cas de la comparaison multiple. Cette nouvelle méthode est comparée à certains algorithmes présentés dans le chapitre 2, et quelques exemples d’application portant sur la comparaison de structures 3D de protéines
+seront détaillés. On décrira aussi une application à la comparaison des potentiels d’interaction, basée sur une nouvelle description de ces potentiels par un ensemble de points caractéristiques.
+Enfin, le cinquième chapitre présente une nouvelle méthode d’analyse des différentes
+conformations d’un même ensemble de points [Escalier et Viari, 1997]. On se place
+d’emblée dans un cadre multiple, où l’on dispose de plus de deux conformations. Je
+m’attacherai tout d’abord à donner une définition rigoureuse d’un sous-ensemble conservé
+dans le cas multiple, ce cas étant à ma connaissance assez peu étudié. Je présenterai
+ensuite deux versions d’un algorithme de résolution, ainsi que des exemples d’application.
+C’est  dans  le  cadre  de  Travaux  d’Etudes  et  de  Recherches  pour  l’Université  de 
+Strasbourg qu’a été étudié un nouvel algorithme de tri, appelé « tri à bulles gelées ». 
+Afin de comprendre les mécanismes de ce nouvel algorithme, il fallait le décrire avec plus de 
+précision. Pour se donner plusieurs idées de cet algorithme, il est intéressant de le développer 
+de différentes façons, par exemple en itératif ou en récursif. 
+La suite de l’étude consistait à déterminer la complexité de cet algorithme en s’appuyant sur 
+la complexité d’autres algorithmes étant utilisés pour la construction du « tri à bulles gelées ». 
+Dans le but de trouver un intérêt au tri flou, il est intéressant d’étudier d’autres algorithmes de 
+tri en version floue et même d’établir une liste decomparaisons entre tous ces algorithmes. 
+Ceci nous amènera à penser à l’utilité du tri flou pour la recherche.
+L'algorithme, dit du "tri à bulles gelées", utilisecomme base la méthode du tri à bulles, 
+en la modifiant afin que, d'une part, deux valeurs ne soient échangées que si leur écart est 
+supérieur  à  une  certaine  tolérance  t  (une  valeur  choisie  tel  que  si  a  et  b  sont  ordonnés, 
+l’ordre  ne  sera  assuré  que  si  a+t  et  b  sont  aussi  ordonnés),  et  d'autre  part  qu'une  bulle 
+puisse avoir une taille supérieure à 1. 
+Dans le tri à bulles standard, la comparaison se fait entre l’élément de la bulle avec 
+l’élément suivant. Si l’élément de la bulle est plus grand, alors on fait une permutation, 
+sinon l’élément suivant devient la bulle. 
+Dans  un  tri  flou,  l’algorithme  utilisé  comprend  une certaine  tolérance  t.  Soit  S  la 
+relation  d’ordre  considérée,  si  on  a  S(a  ,  b),  on  n’assurera  que  a  et  b  sont  dans  l’ordre 
+après le tri que si on à également S(a+t , b). 
+Afin de rendre l’algorithme du tri à bulles plus rapide, si l’élément après la bulle est 
+égal à l’élément de la bulle, on augmente la taillede la bulle.
+L'algorithme de tri rapide est algorithme de type dichotomique. Son principe consiste à 
+séparer l'ensemble des éléments en deux parties. Pour effectuer la séparation, une valeur 
+pivot est choisie. Les valeurs sont réparties en deux ensembles suivant qu'elles sont plus 
+grandes ou plus petites que le pivot. Ensuite, les  deux ensembles sont triés séparément, 
+suivant  la  même  méthode.  L'algorithme,  est  récursif,  mais  il  n'est  pas  nécessaire  de 
+fusionner  les  deux  ensembles.  Le  résultat  du  tri  est  égal  au  tri  de  l'ensemble  dont  les 
+valeurs sont inférieures au pivot concaténé à l'ensemble des valeurs supérieures au pivot, 
+ce dernier étant entre les deux ensembles.
+Le tri fusion est construit suivant la stratégie  « diviser pour régner ». Le principe de 
+base de la stratégie « diviser pour régner » est que pour résoudre un gros problème, il est 
+souvent plus facile de le diviser en petits problèmes élémentaires. Une fois chaque petit 
+problème  résolu,  il  n'y  a  plus  qu'à  combiner  les  différentes  solutions  pour  résoudre  le 
+problème global. La méthode « diviser pour régner »est tout à fait applicable au problème 
+de tri : plutôt que de trier le tableau complet, ilest préférable de trier deux sous tableaux 
+de taille égale, puis de fusionner les résultats. 
+L'algorithme proposé est récursif. En effet, les deux sous tableaux seront eux même 
+triés à l'aide de l'algorithme de tri fusion. Un tableau ne comportant qu'un seul élément 
+sera considéré comme trié : c'est la condition d'arrêt.
+Le tri par sélection est l'un des tris les plus instinctifs. Le principe est que pour classer 
+n valeurs, il faut rechercher la plus grande valeuret la placer en fin de liste, puis la plus 
+grande valeur dans les valeurs restante et la placer en avant dernière position et ainsi de 
+suite... 
+Considérons  un  tableau  à  n  éléments.  Pour  effectuer le  tri  par  sélection,  il  faut 
+rechercher dans ce tableau la position du plus grand élément. Le plus grand élément est 
+alors échangé avec le dernier  élément du tableau. Ensuite, on réitère l'algorithme sur le 
+tableau  constitué  par  les  (n-p)  premiers  éléments  où  p  est  le  nombre  de  fois  où 
+l'algorithme a été itéré. L'algorithme se termine quand p=(n-1), c'est à dire quand il n'y a 
+plus qu'une valeur à sélectionner, celle ci est alors la plus petite valeur du tableau. 
+La relative simplicité de cet algorithme fait qu'onlui attribut le qualificatif 
+d'algorithme naïf. Cela signifie que même si l'algorithme est correct, il est trop simple 
+pour être réellement efficace. En effet, la complexité, en nombre de comparaisons, est 
+analogue à la complexité du tri bulle optimisé. A la première itération, sont effectuées 
+(n-1) comparaisons. A la pième
+itération, sont effectuées (n-p) comparaisons. Soit une 
+complexité en O(n²) dont le calcul exact est donné par la formule suivante. 
+En  2004-2005,  un  TER  a  été  proposé,  s’intitulant  « Organisation  d'un  répertoire 
+d'images »  (manière  d'organiser  les  images  d'un  répertoire  et  de  les  regrouper  par 
+similarité). Celui-ci s’appuie entre autre sur un tri partiel. Il serait intéressant pour obtenir 
+des résultats convaincants, d’appliquer le « tri à bulles gelées » sur cet exemple. Le choix 
+de la tolérance dépendrait bien évidemment de l’attente de l’utilisateur. La tolérance serait 
+liée  à  la  similarité :  plus  la  tolérance  est  grande moins  forte  est  la  similarité  entre  les
+Les tris les plus performants qui existent tels quele tri rapide et le tri fusion, ne vont 
+pas dépendre de la diversité et de ce fait pour unediversité très grande des éléments à trier, 
+notre  nouvel  algorithme  ce  trouve  être  insatisfaisant.  Mais  si  l’on  regarde  les  résultats  par 
+rapport  au  nombre  d’entrées,  on  remarque  que  notre  algorithme,  le  « tri  à  bulles  gelées » 
+affiche d’excellentes performances. Donc si l’on peut se permettre un tri partiel, dans le cas de 
+grands conteneurs d’éléments à faible diversité, ilest préférable pour des gains de temps non 
+négligeables d’utiliser le nouvel algorithme étudié. On notera aussi que la tolérance a moins 
+de poids sur la complexité du « tri à bulles gelées» que sur les autres algorithmes en version 
+floue étudiés. 
+Une idée d’étude et de recherche dans la théorie des graphes, serait l’utilisation d’un 
+tri flou permettant une approche de la résolution de problèmes NP-complets, tel que le tri des 
+sommets d’un graphe pour la recherche d’un cycle hamiltonien
+données entre elles, afin de déterminer la fonction d’une protéine à partir de sa structure
+chimique ou physique.
+Ces méthodes diffèrent selon la représentation utilisée. Les méthodes de comparaison
+de représentation chimiques sont efficaces lorsque la similarité entre les protéines se
+reflète au niveau de leurs séquences, par exemple lorsque les protéines sont proches évolutivement. La séquence d’une protéine pouvant se déduire de la séquence d’ADN du gène
+correspondant, ce type d’analyse profite de l’accumulation de données en provenance des
+projets de séquençage de génomes complets.
+Le travail réalisé durant cette thèse relève d’une deuxième approche, qui consiste à
+comparer les structures tridimensionnelles (3D) des protéines. La structure 3D d’une protéine étant fortement liée à sa fonction biologique, ce type d’approche permet de détecter
+des similarités plus faibles, non décelables au niveau de la séquence.
+Le nombre de structures de protéines déterminées expérimentalement est lui aussi en
+constante augmentation. En 1960, une première structure était déterminée par diffraction
+de rayons X [Kendrew et al., 1960]. Actuellement, la Protein Data Bank recense plus de
+4500 structures de protéines [Bernstein et al., 1977]. Grâce au perfectionnement des
+méthodes de détermination par diffraction, et à l’utilisation de nouvelles méthodes comme
+la résonnance magnétique nucléaire, le nombre de nouvelles structures publiées chaque
+année est de l’ordre de 500. Si les premières comparaisons étaient effectuées visuellement,
+un tel volume de données nécessite désormais la mise en œuvre d’outils informatiques
+performants.
+Un des problèmes auxquels je me suis intéressé durant ce travail est la détection de
+sous-structures communes à plusieurs protéines, c’est-à-dire l’identification au sein de ces
+protéines de sous-ensembles d’atomes ayant les mêmes positions relatives dans l’espace.
+Dans son principe, cette méthode d’analyse est semblable à la recherche de facteurs communs à un ensemble de séquences, ou plus généralement à la recherche de régularités dans
+des séquences. La structure tridimensionnelle d’une protéine, et plus généralement d’une
+molécule, peut être représentée par un ensemble de points dans l’espace à trois dimensions
+. Il suffit en effet d’associer à chaque atome un point dont les coordonnées sont celles
+du “centre” de l’atome. On se ramène ainsi au problème de la comparaison d’ensembles
+de points dans un espace euclidien, problème très étudié dans le domaine de la vision artificielle et de l’analyse d’images.
+On peut utiliser la théorie des champs de force pour décrire une molécule. On calcule
+un potentiel dérivant d’un champ de force permettant de mesurer en chaque point l’interaction de la molécule avec son environnement. L’étude et la comparaison des potentiels
+d’interaction de plusieurs molécules permet alors de détecter certains types de similarités
+fondées sur des critères d’énergie, et non plus uniquement sur la disposition spatiale des
+atomes formant la molécule. Ce problème est beaucoup moins étudié que le précédent,
+mais nous verrons qu’il peut lui aussi se ramener à la comparaison géométrique d’ensembles de points dans l’espace, en décrivant la forme du potentiel d’interaction par un
+ensemble de points caractéristiques.
+Un troisième problème lié à la structure des protéines concerne l’analyse des différentes conformations d’un même polypeptide. En effet, du fait de la possibilité de rotation
+autour de certaines liaisons, des mouvements internes faisant intervenir plusieurs atomes
+peuvent se produire. Certains de ces mouvements jouent un rôle très important dans le
+comparaison de plusieurs conformations d’une même protéine, afin de déterminer les
+sous-structures conservées, c’est-à-dire les sous-ensembles d’atomes dont les positions
+relatives restent identiques dans les différentes conformations, ou inversement d’accéder
+aux zones “mobiles” de la molécule.
+Ce texte est divisé en cinq chapitres. Le premier est une introduction générale aux protéines. Y sont présentées les différentes façons de décrire les protéines, ainsi que leurs
+principales caractéristiques. Ce chapitre n’a bien sûr pas pour but d’être exhaustif, mais
+plutôt de donner une motivation “biologique” aux travaux que j’ai effectués, en décrivant
+les différents problèmes abordés suivant le point de vue d’un utilisateur.
+Le second chapitre est consacré à la présentation de différentes méthodes permettant
+de comparer deux ensembles de points. On s’attachera dans un premier temps à donner un
+énoncé précis et rigoureux des problèmes qui nous intéressent. Ces énoncés sont fondés
+sur une définition de la similarité géométrique entre deux ensembles de points dans un
+espace euclidien. Trois types de définitions sont proposés, conduisant à des méthodes de
+résolution différentes. On étudiera aussi le nombre de solutions des problèmes considérés,
+et l’on verra que ce nombre dépend lui aussi de la définition de similarité choisie. Deux
+problèmes sont considérés: la comparaison globale, où l’on cherche à déterminer si deux
+ensembles sont similaires, et la comparaison locale, où l’on cherche des sous-ensembles
+similaires au sein des deux ensembles de départ.
+Dans le troisième chapitre, je présenterai des méthodes développées spécifiquement
+pour la comparaison de protéines. De portée moins générale que les algorithmes présentés
+au chapitre précédent, elles introduisent de nouvelles contraintes dans les énoncés des problèmes, ou bien utilisent une description de la structure protéique plus compacte mais
+moins précise qu’une description par un ensemble de points. Ces méthodes de comparaison reposent le plus souvent sur des définitions beaucoup moins formelles que celle
+employées au chapitre précédent, et font intervenir certains paramètres dont les valeurs
+sont déterminées de façon empirique.
+Les deux derniers chapitres sont consacrés au travaux que j’ai effectués durant cette
+thèse. Dans le chapitre 4, je présenterai un nouvel algorithme de recherche de sous-ensembles communs à deux ensembles de points dans un espace euclidien, ainsi que son extension à la comparaison multiple, c’est-à-dire la comparaison simultanée de plus de deux
+ensembles [Escalier et al., 1997]. On se base sur le formalisme introduit au chapitre 2, qui
+est généralisé afin de pouvoir s’appliquer au cas de la comparaison multiple. Cette nouvelle méthode est comparée à certains algorithmes présentés dans le chapitre 2, et quelques exemples d’application portant sur la comparaison de structures 3D de protéines
+seront détaillés. On décrira aussi une application à la comparaison des potentiels d’interaction, basée sur une nouvelle description de ces potentiels par un ensemble de points caractéristiques.
+Enfin, le cinquième chapitre présente une nouvelle méthode d’analyse des différentes
+conformations d’un même ensemble de points [Escalier et Viari, 1997]. On se place
+d’emblée dans un cadre multiple, où l’on dispose de plus de deux conformations. Je
+m’attacherai tout d’abord à donner une définition rigoureuse d’un sous-ensemble conservé
+dans le cas multiple, ce cas étant à ma connaissance assez peu étudié. Je présenterai
+ensuite deux versions d’un algorithme de résolution, ainsi que des exemples d’application.
+C’est  dans  le  cadre  de  Travaux  d’Etudes  et  de  Recherches  pour  l’Université  de 
+Strasbourg qu’a été étudié un nouvel algorithme de tri, appelé « tri à bulles gelées ». 
+Afin de comprendre les mécanismes de ce nouvel algorithme, il fallait le décrire avec plus de 
+précision. Pour se donner plusieurs idées de cet algorithme, il est intéressant de le développer 
+de différentes façons, par exemple en itératif ou en récursif. 
+La suite de l’étude consistait à déterminer la complexité de cet algorithme en s’appuyant sur 
+la complexité d’autres algorithmes étant utilisés pour la construction du « tri à bulles gelées ». 
+Dans le but de trouver un intérêt au tri flou, il est intéressant d’étudier d’autres algorithmes de 
+tri en version floue et même d’établir une liste decomparaisons entre tous ces algorithmes. 
+Ceci nous amènera à penser à l’utilité du tri flou pour la recherche.
+L'algorithme, dit du "tri à bulles gelées", utilisecomme base la méthode du tri à bulles, 
+en la modifiant afin que, d'une part, deux valeurs ne soient échangées que si leur écart est 
+supérieur  à  une  certaine  tolérance  t  (une  valeur  choisie  tel  que  si  a  et  b  sont  ordonnés, 
+l’ordre  ne  sera  assuré  que  si  a+t  et  b  sont  aussi  ordonnés),  et  d'autre  part  qu'une  bulle 
+puisse avoir une taille supérieure à 1. 
+Dans le tri à bulles standard, la comparaison se fait entre l’élément de la bulle avec 
+l’élément suivant. Si l’élément de la bulle est plus grand, alors on fait une permutation, 
+sinon l’élément suivant devient la bulle. 
+Dans  un  tri  flou,  l’algorithme  utilisé  comprend  une certaine  tolérance  t.  Soit  S  la 
+relation  d’ordre  considérée,  si  on  a  S(a  ,  b),  on  n’assurera  que  a  et  b  sont  dans  l’ordre 
+après le tri que si on à également S(a+t , b). 
+Afin de rendre l’algorithme du tri à bulles plus rapide, si l’élément après la bulle est 
+égal à l’élément de la bulle, on augmente la taillede la bulle.
+L'algorithme de tri rapide est algorithme de type dichotomique. Son principe consiste à 
+séparer l'ensemble des éléments en deux parties. Pour effectuer la séparation, une valeur 
+pivot est choisie. Les valeurs sont réparties en deux ensembles suivant qu'elles sont plus 
+grandes ou plus petites que le pivot. Ensuite, les  deux ensembles sont triés séparément, 
+suivant  la  même  méthode.  L'algorithme,  est  récursif,  mais  il  n'est  pas  nécessaire  de 
+fusionner  les  deux  ensembles.  Le  résultat  du  tri  est  égal  au  tri  de  l'ensemble  dont  les 
+valeurs sont inférieures au pivot concaténé à l'ensemble des valeurs supérieures au pivot, 
+ce dernier étant entre les deux ensembles.
+Le tri fusion est construit suivant la stratégie  « diviser pour régner ». Le principe de 
+base de la stratégie « diviser pour régner » est que pour résoudre un gros problème, il est 
+souvent plus facile de le diviser en petits problèmes élémentaires. Une fois chaque petit 
+problème  résolu,  il  n'y  a  plus  qu'à  combiner  les  différentes  solutions  pour  résoudre  le 
+problème global. La méthode « diviser pour régner »est tout à fait applicable au problème 
+de tri : plutôt que de trier le tableau complet, ilest préférable de trier deux sous tableaux 
+de taille égale, puis de fusionner les résultats. 
+L'algorithme proposé est récursif. En effet, les deux sous tableaux seront eux même 
+triés à l'aide de l'algorithme de tri fusion. Un tableau ne comportant qu'un seul élément 
+sera considéré comme trié : c'est la condition d'arrêt.
+Le tri par sélection est l'un des tris les plus instinctifs. Le principe est que pour classer 
+n valeurs, il faut rechercher la plus grande valeuret la placer en fin de liste, puis la plus 
+grande valeur dans les valeurs restante et la placer en avant dernière position et ainsi de 
+suite... 
+Considérons  un  tableau  à  n  éléments.  Pour  effectuer le  tri  par  sélection,  il  faut 
+rechercher dans ce tableau la position du plus grand élément. Le plus grand élément est 
+alors échangé avec le dernier  élément du tableau. Ensuite, on réitère l'algorithme sur le 
+tableau  constitué  par  les  (n-p)  premiers  éléments  où  p  est  le  nombre  de  fois  où 
+l'algorithme a été itéré. L'algorithme se termine quand p=(n-1), c'est à dire quand il n'y a 
+plus qu'une valeur à sélectionner, celle ci est alors la plus petite valeur du tableau. 
+La relative simplicité de cet algorithme fait qu'onlui attribut le qualificatif 
+d'algorithme naïf. Cela signifie que même si l'algorithme est correct, il est trop simple 
+pour être réellement efficace. En effet, la complexité, en nombre de comparaisons, est 
+analogue à la complexité du tri bulle optimisé. A la première itération, sont effectuées 
+(n-1) comparaisons. A la pième
+itération, sont effectuées (n-p) comparaisons. Soit une 
+complexité en O(n²) dont le calcul exact est donné par la formule suivante. 
+En  2004-2005,  un  TER  a  été  proposé,  s’intitulant  « Organisation  d'un  répertoire 
+d'images »  (manière  d'organiser  les  images  d'un  répertoire  et  de  les  regrouper  par 
+similarité). Celui-ci s’appuie entre autre sur un tri partiel. Il serait intéressant pour obtenir 
+des résultats convaincants, d’appliquer le « tri à bulles gelées » sur cet exemple. Le choix 
+de la tolérance dépendrait bien évidemment de l’attente de l’utilisateur. La tolérance serait 
+liée  à  la  similarité :  plus  la  tolérance  est  grande moins  forte  est  la  similarité  entre  les
+Les tris les plus performants qui existent tels quele tri rapide et le tri fusion, ne vont 
+pas dépendre de la diversité et de ce fait pour unediversité très grande des éléments à trier, 
+notre  nouvel  algorithme  ce  trouve  être  insatisfaisant.  Mais  si  l’on  regarde  les  résultats  par 
+rapport  au  nombre  d’entrées,  on  remarque  que  notre  algorithme,  le  « tri  à  bulles  gelées » 
+affiche d’excellentes performances. Donc si l’on peut se permettre un tri partiel, dans le cas de 
+grands conteneurs d’éléments à faible diversité, ilest préférable pour des gains de temps non 
+négligeables d’utiliser le nouvel algorithme étudié. On notera aussi que la tolérance a moins 
+de poids sur la complexité du « tri à bulles gelées» que sur les autres algorithmes en version 
+floue étudiés. 
+Une idée d’étude et de recherche dans la théorie des graphes, serait l’utilisation d’un 
+tri flou permettant une approche de la résolution de problèmes NP-complets, tel que le tri des 
+sommets d’un graphe pour la recherche d’un cycle hamiltonien
+données entre elles, afin de déterminer la fonction d’une protéine à partir de sa structure
+chimique ou physique.
+Ces méthodes diffèrent selon la représentation utilisée. Les méthodes de comparaison
+de représentation chimiques sont efficaces lorsque la similarité entre les protéines se
+reflète au niveau de leurs séquences, par exemple lorsque les protéines sont proches évolutivement. La séquence d’une protéine pouvant se déduire de la séquence d’ADN du gène
+correspondant, ce type d’analyse profite de l’accumulation de données en provenance des
+projets de séquençage de génomes complets.
+Le travail réalisé durant cette thèse relève d’une deuxième approche, qui consiste à
+comparer les structures tridimensionnelles (3D) des protéines. La structure 3D d’une protéine étant fortement liée à sa fonction biologique, ce type d’approche permet de détecter
+des similarités plus faibles, non décelables au niveau de la séquence.
+Le nombre de structures de protéines déterminées expérimentalement est lui aussi en
+constante augmentation. En 1960, une première structure était déterminée par diffraction
+de rayons X [Kendrew et al., 1960]. Actuellement, la Protein Data Bank recense plus de
+4500 structures de protéines [Bernstein et al., 1977]. Grâce au perfectionnement des
+méthodes de détermination par diffraction, et à l’utilisation de nouvelles méthodes comme
+la résonnance magnétique nucléaire, le nombre de nouvelles structures publiées chaque
+année est de l’ordre de 500. Si les premières comparaisons étaient effectuées visuellement,
+un tel volume de données nécessite désormais la mise en œuvre d’outils informatiques
+performants.
+Un des problèmes auxquels je me suis intéressé durant ce travail est la détection de
+sous-structures communes à plusieurs protéines, c’est-à-dire l’identification au sein de ces
+protéines de sous-ensembles d’atomes ayant les mêmes positions relatives dans l’espace.
+Dans son principe, cette méthode d’analyse est semblable à la recherche de facteurs communs à un ensemble de séquences, ou plus généralement à la recherche de régularités dans
+des séquences. La structure tridimensionnelle d’une protéine, et plus généralement d’une
+molécule, peut être représentée par un ensemble de points dans l’espace à trois dimensions
+. Il suffit en effet d’associer à chaque atome un point dont les coordonnées sont celles
+du “centre” de l’atome. On se ramène ainsi au problème de la comparaison d’ensembles
+de points dans un espace euclidien, problème très étudié dans le domaine de la vision artificielle et de l’analyse d’images.
+On peut utiliser la théorie des champs de force pour décrire une molécule. On calcule
+un potentiel dérivant d’un champ de force permettant de mesurer en chaque point l’interaction de la molécule avec son environnement. L’étude et la comparaison des potentiels
+d’interaction de plusieurs molécules permet alors de détecter certains types de similarités
+fondées sur des critères d’énergie, et non plus uniquement sur la disposition spatiale des
+atomes formant la molécule. Ce problème est beaucoup moins étudié que le précédent,
+mais nous verrons qu’il peut lui aussi se ramener à la comparaison géométrique d’ensembles de points dans l’espace, en décrivant la forme du potentiel d’interaction par un
+ensemble de points caractéristiques.
+Un troisième problème lié à la structure des protéines concerne l’analyse des différentes conformations d’un même polypeptide. En effet, du fait de la possibilité de rotation
+autour de certaines liaisons, des mouvements internes faisant intervenir plusieurs atomes
+peuvent se produire. Certains de ces mouvements jouent un rôle très important dans le
+comparaison de plusieurs conformations d’une même protéine, afin de déterminer les
+sous-structures conservées, c’est-à-dire les sous-ensembles d’atomes dont les positions
+relatives restent identiques dans les différentes conformations, ou inversement d’accéder
+aux zones “mobiles” de la molécule.
+Ce texte est divisé en cinq chapitres. Le premier est une introduction générale aux protéines. Y sont présentées les différentes façons de décrire les protéines, ainsi que leurs
+principales caractéristiques. Ce chapitre n’a bien sûr pas pour but d’être exhaustif, mais
+plutôt de donner une motivation “biologique” aux travaux que j’ai effectués, en décrivant
+les différents problèmes abordés suivant le point de vue d’un utilisateur.
+Le second chapitre est consacré à la présentation de différentes méthodes permettant
+de comparer deux ensembles de points. On s’attachera dans un premier temps à donner un
+énoncé précis et rigoureux des problèmes qui nous intéressent. Ces énoncés sont fondés
+sur une définition de la similarité géométrique entre deux ensembles de points dans un
+espace euclidien. Trois types de définitions sont proposés, conduisant à des méthodes de
+résolution différentes. On étudiera aussi le nombre de solutions des problèmes considérés,
+et l’on verra que ce nombre dépend lui aussi de la définition de similarité choisie. Deux
+problèmes sont considérés: la comparaison globale, où l’on cherche à déterminer si deux
+ensembles sont similaires, et la comparaison locale, où l’on cherche des sous-ensembles
+similaires au sein des deux ensembles de départ.
+Dans le troisième chapitre, je présenterai des méthodes développées spécifiquement
+pour la comparaison de protéines. De portée moins générale que les algorithmes présentés
+au chapitre précédent, elles introduisent de nouvelles contraintes dans les énoncés des problèmes, ou bien utilisent une description de la structure protéique plus compacte mais
+moins précise qu’une description par un ensemble de points. Ces méthodes de comparaison reposent le plus souvent sur des définitions beaucoup moins formelles que celle
+employées au chapitre précédent, et font intervenir certains paramètres dont les valeurs
+sont déterminées de façon empirique.
+Les deux derniers chapitres sont consacrés au travaux que j’ai effectués durant cette
+thèse. Dans le chapitre 4, je présenterai un nouvel algorithme de recherche de sous-ensembles communs à deux ensembles de points dans un espace euclidien, ainsi que son extension à la comparaison multiple, c’est-à-dire la comparaison simultanée de plus de deux
+ensembles [Escalier et al., 1997]. On se base sur le formalisme introduit au chapitre 2, qui
+est généralisé afin de pouvoir s’appliquer au cas de la comparaison multiple. Cette nouvelle méthode est comparée à certains algorithmes présentés dans le chapitre 2, et quelques exemples d’application portant sur la comparaison de structures 3D de protéines
+seront détaillés. On décrira aussi une application à la comparaison des potentiels d’interaction, basée sur une nouvelle description de ces potentiels par un ensemble de points caractéristiques.
+Enfin, le cinquième chapitre présente une nouvelle méthode d’analyse des différentes
+conformations d’un même ensemble de points [Escalier et Viari, 1997]. On se place
+d’emblée dans un cadre multiple, où l’on dispose de plus de deux conformations. Je
+m’attacherai tout d’abord à donner une définition rigoureuse d’un sous-ensemble conservé
+dans le cas multiple, ce cas étant à ma connaissance assez peu étudié. Je présenterai
+ensuite deux versions d’un algorithme de résolution, ainsi que des exemples d’application.
+C’est  dans  le  cadre  de  Travaux  d’Etudes  et  de  Recherches  pour  l’Université  de 
+Strasbourg qu’a été étudié un nouvel algorithme de tri, appelé « tri à bulles gelées ». 
+Afin de comprendre les mécanismes de ce nouvel algorithme, il fallait le décrire avec plus de 
+précision. Pour se donner plusieurs idées de cet algorithme, il est intéressant de le développer 
+de différentes façons, par exemple en itératif ou en récursif. 
+La suite de l’étude consistait à déterminer la complexité de cet algorithme en s’appuyant sur 
+la complexité d’autres algorithmes étant utilisés pour la construction du « tri à bulles gelées ». 
+Dans le but de trouver un intérêt au tri flou, il est intéressant d’étudier d’autres algorithmes de 
+tri en version floue et même d’établir une liste decomparaisons entre tous ces algorithmes. 
+Ceci nous amènera à penser à l’utilité du tri flou pour la recherche.
+L'algorithme, dit du "tri à bulles gelées", utilisecomme base la méthode du tri à bulles, 
+en la modifiant afin que, d'une part, deux valeurs ne soient échangées que si leur écart est 
+supérieur  à  une  certaine  tolérance  t  (une  valeur  choisie  tel  que  si  a  et  b  sont  ordonnés, 
+l’ordre  ne  sera  assuré  que  si  a+t  et  b  sont  aussi  ordonnés),  et  d'autre  part  qu'une  bulle 
+puisse avoir une taille supérieure à 1. 
+Dans le tri à bulles standard, la comparaison se fait entre l’élément de la bulle avec 
+l’élément suivant. Si l’élément de la bulle est plus grand, alors on fait une permutation, 
+sinon l’élément suivant devient la bulle. 
+Dans  un  tri  flou,  l’algorithme  utilisé  comprend  une certaine  tolérance  t.  Soit  S  la 
+relation  d’ordre  considérée,  si  on  a  S(a  ,  b),  on  n’assurera  que  a  et  b  sont  dans  l’ordre 
+après le tri que si on à également S(a+t , b). 
+Afin de rendre l’algorithme du tri à bulles plus rapide, si l’élément après la bulle est 
+égal à l’élément de la bulle, on augmente la taillede la bulle.
+L'algorithme de tri rapide est algorithme de type dichotomique. Son principe consiste à 
+séparer l'ensemble des éléments en deux parties. Pour effectuer la séparation, une valeur 
+pivot est choisie. Les valeurs sont réparties en deux ensembles suivant qu'elles sont plus 
+grandes ou plus petites que le pivot. Ensuite, les  deux ensembles sont triés séparément, 
+suivant  la  même  méthode.  L'algorithme,  est  récursif,  mais  il  n'est  pas  nécessaire  de 
+fusionner  les  deux  ensembles.  Le  résultat  du  tri  est  égal  au  tri  de  l'ensemble  dont  les 
+valeurs sont inférieures au pivot concaténé à l'ensemble des valeurs supérieures au pivot, 
+ce dernier étant entre les deux ensembles.
+Le tri fusion est construit suivant la stratégie  « diviser pour régner ». Le principe de 
+base de la stratégie « diviser pour régner » est que pour résoudre un gros problème, il est 
+souvent plus facile de le diviser en petits problèmes élémentaires. Une fois chaque petit 
+problème  résolu,  il  n'y  a  plus  qu'à  combiner  les  différentes  solutions  pour  résoudre  le 
+problème global. La méthode « diviser pour régner »est tout à fait applicable au problème 
+de tri : plutôt que de trier le tableau complet, ilest préférable de trier deux sous tableaux 
+de taille égale, puis de fusionner les résultats. 
+L'algorithme proposé est récursif. En effet, les deux sous tableaux seront eux même 
+triés à l'aide de l'algorithme de tri fusion. Un tableau ne comportant qu'un seul élément 
+sera considéré comme trié : c'est la condition d'arrêt.
+Le tri par sélection est l'un des tris les plus instinctifs. Le principe est que pour classer 
+n valeurs, il faut rechercher la plus grande valeuret la placer en fin de liste, puis la plus 
+grande valeur dans les valeurs restante et la placer en avant dernière position et ainsi de 
+suite... 
+Considérons  un  tableau  à  n  éléments.  Pour  effectuer le  tri  par  sélection,  il  faut 
+rechercher dans ce tableau la position du plus grand élément. Le plus grand élément est 
+alors échangé avec le dernier  élément du tableau. Ensuite, on réitère l'algorithme sur le 
+tableau  constitué  par  les  (n-p)  premiers  éléments  où  p  est  le  nombre  de  fois  où 
+l'algorithme a été itéré. L'algorithme se termine quand p=(n-1), c'est à dire quand il n'y a 
+plus qu'une valeur à sélectionner, celle ci est alors la plus petite valeur du tableau. 
+La relative simplicité de cet algorithme fait qu'onlui attribut le qualificatif 
+d'algorithme naïf. Cela signifie que même si l'algorithme est correct, il est trop simple 
+pour être réellement efficace. En effet, la complexité, en nombre de comparaisons, est 
+analogue à la complexité du tri bulle optimisé. A la première itération, sont effectuées 
+(n-1) comparaisons. A la pième
+itération, sont effectuées (n-p) comparaisons. Soit une 
+complexité en O(n²) dont le calcul exact est donné par la formule suivante. 
+En  2004-2005,  un  TER  a  été  proposé,  s’intitulant  « Organisation  d'un  répertoire 
+d'images »  (manière  d'organiser  les  images  d'un  répertoire  et  de  les  regrouper  par 
+similarité). Celui-ci s’appuie entre autre sur un tri partiel. Il serait intéressant pour obtenir 
+des résultats convaincants, d’appliquer le « tri à bulles gelées » sur cet exemple. Le choix 
+de la tolérance dépendrait bien évidemment de l’attente de l’utilisateur. La tolérance serait 
+liée  à  la  similarité :  plus  la  tolérance  est  grande moins  forte  est  la  similarité  entre  les
+Les tris les plus performants qui existent tels quele tri rapide et le tri fusion, ne vont 
+pas dépendre de la diversité et de ce fait pour unediversité très grande des éléments à trier, 
+notre  nouvel  algorithme  ce  trouve  être  insatisfaisant.  Mais  si  l’on  regarde  les  résultats  par 
+rapport  au  nombre  d’entrées,  on  remarque  que  notre  algorithme,  le  « tri  à  bulles  gelées » 
+affiche d’excellentes performances. Donc si l’on peut se permettre un tri partiel, dans le cas de 
+grands conteneurs d’éléments à faible diversité, ilest préférable pour des gains de temps non 
+négligeables d’utiliser le nouvel algorithme étudié. On notera aussi que la tolérance a moins 
+de poids sur la complexité du « tri à bulles gelées» que sur les autres algorithmes en version 
+floue étudiés. 
+Une idée d’étude et de recherche dans la théorie des graphes, serait l’utilisation d’un 
+tri flou permettant une approche de la résolution de problèmes NP-complets, tel que le tri des 
+sommets d’un graphe pour la recherche d’un cycle hamiltonien
+données entre elles, afin de déterminer la fonction d’une protéine à partir de sa structure
+chimique ou physique.
+Ces méthodes diffèrent selon la représentation utilisée. Les méthodes de comparaison
+de représentation chimiques sont efficaces lorsque la similarité entre les protéines se
+reflète au niveau de leurs séquences, par exemple lorsque les protéines sont proches évolutivement. La séquence d’une protéine pouvant se déduire de la séquence d’ADN du gène
+correspondant, ce type d’analyse profite de l’accumulation de données en provenance des
+projets de séquençage de génomes complets.
+Le travail réalisé durant cette thèse relève d’une deuxième approche, qui consiste à
+comparer les structures tridimensionnelles (3D) des protéines. La structure 3D d’une protéine étant fortement liée à sa fonction biologique, ce type d’approche permet de détecter
+des similarités plus faibles, non décelables au niveau de la séquence.
+Le nombre de structures de protéines déterminées expérimentalement est lui aussi en
+constante augmentation. En 1960, une première structure était déterminée par diffraction
+de rayons X [Kendrew et al., 1960]. Actuellement, la Protein Data Bank recense plus de
+4500 structures de protéines [Bernstein et al., 1977]. Grâce au perfectionnement des
+méthodes de détermination par diffraction, et à l’utilisation de nouvelles méthodes comme
+la résonnance magnétique nucléaire, le nombre de nouvelles structures publiées chaque
+année est de l’ordre de 500. Si les premières comparaisons étaient effectuées visuellement,
+un tel volume de données nécessite désormais la mise en œuvre d’outils informatiques
+performants.
+Un des problèmes auxquels je me suis intéressé durant ce travail est la détection de
+sous-structures communes à plusieurs protéines, c’est-à-dire l’identification au sein de ces
+protéines de sous-ensembles d’atomes ayant les mêmes positions relatives dans l’espace.
+Dans son principe, cette méthode d’analyse est semblable à la recherche de facteurs communs à un ensemble de séquences, ou plus généralement à la recherche de régularités dans
+des séquences. La structure tridimensionnelle d’une protéine, et plus généralement d’une
+molécule, peut être représentée par un ensemble de points dans l’espace à trois dimensions
+. Il suffit en effet d’associer à chaque atome un point dont les coordonnées sont celles
+du “centre” de l’atome. On se ramène ainsi au problème de la comparaison d’ensembles
+de points dans un espace euclidien, problème très étudié dans le domaine de la vision artificielle et de l’analyse d’images.
+On peut utiliser la théorie des champs de force pour décrire une molécule. On calcule
+un potentiel dérivant d’un champ de force permettant de mesurer en chaque point l’interaction de la molécule avec son environnement. L’étude et la comparaison des potentiels
+d’interaction de plusieurs molécules permet alors de détecter certains types de similarités
+fondées sur des critères d’énergie, et non plus uniquement sur la disposition spatiale des
+atomes formant la molécule. Ce problème est beaucoup moins étudié que le précédent,
+mais nous verrons qu’il peut lui aussi se ramener à la comparaison géométrique d’ensembles de points dans l’espace, en décrivant la forme du potentiel d’interaction par un
+ensemble de points caractéristiques.
+Un troisième problème lié à la structure des protéines concerne l’analyse des différentes conformations d’un même polypeptide. En effet, du fait de la possibilité de rotation
+autour de certaines liaisons, des mouvements internes faisant intervenir plusieurs atomes
+peuvent se produire. Certains de ces mouvements jouent un rôle très important dans le
+comparaison de plusieurs conformations d’une même protéine, afin de déterminer les
+sous-structures conservées, c’est-à-dire les sous-ensembles d’atomes dont les positions
+relatives restent identiques dans les différentes conformations, ou inversement d’accéder
+aux zones “mobiles” de la molécule.
+Ce texte est divisé en cinq chapitres. Le premier est une introduction générale aux protéines. Y sont présentées les différentes façons de décrire les protéines, ainsi que leurs
+principales caractéristiques. Ce chapitre n’a bien sûr pas pour but d’être exhaustif, mais
+plutôt de donner une motivation “biologique” aux travaux que j’ai effectués, en décrivant
+les différents problèmes abordés suivant le point de vue d’un utilisateur.
+Le second chapitre est consacré à la présentation de différentes méthodes permettant
+de comparer deux ensembles de points. On s’attachera dans un premier temps à donner un
+énoncé précis et rigoureux des problèmes qui nous intéressent. Ces énoncés sont fondés
+sur une définition de la similarité géométrique entre deux ensembles de points dans un
+espace euclidien. Trois types de définitions sont proposés, conduisant à des méthodes de
+résolution différentes. On étudiera aussi le nombre de solutions des problèmes considérés,
+et l’on verra que ce nombre dépend lui aussi de la définition de similarité choisie. Deux
+problèmes sont considérés: la comparaison globale, où l’on cherche à déterminer si deux
+ensembles sont similaires, et la comparaison locale, où l’on cherche des sous-ensembles
+similaires au sein des deux ensembles de départ.
+Dans le troisième chapitre, je présenterai des méthodes développées spécifiquement
+pour la comparaison de protéines. De portée moins générale que les algorithmes présentés
+au chapitre précédent, elles introduisent de nouvelles contraintes dans les énoncés des problèmes, ou bien utilisent une description de la structure protéique plus compacte mais
+moins précise qu’une description par un ensemble de points. Ces méthodes de comparaison reposent le plus souvent sur des définitions beaucoup moins formelles que celle
+employées au chapitre précédent, et font intervenir certains paramètres dont les valeurs
+sont déterminées de façon empirique.
+Les deux derniers chapitres sont consacrés au travaux que j’ai effectués durant cette
+thèse. Dans le chapitre 4, je présenterai un nouvel algorithme de recherche de sous-ensembles communs à deux ensembles de points dans un espace euclidien, ainsi que son extension à la comparaison multiple, c’est-à-dire la comparaison simultanée de plus de deux
+ensembles [Escalier et al., 1997]. On se base sur le formalisme introduit au chapitre 2, qui
+est généralisé afin de pouvoir s’appliquer au cas de la comparaison multiple. Cette nouvelle méthode est comparée à certains algorithmes présentés dans le chapitre 2, et quelques exemples d’application portant sur la comparaison de structures 3D de protéines
+seront détaillés. On décrira aussi une application à la comparaison des potentiels d’interaction, basée sur une nouvelle description de ces potentiels par un ensemble de points caractéristiques.
+Enfin, le cinquième chapitre présente une nouvelle méthode d’analyse des différentes
+conformations d’un même ensemble de points [Escalier et Viari, 1997]. On se place
+d’emblée dans un cadre multiple, où l’on dispose de plus de deux conformations. Je
+m’attacherai tout d’abord à donner une définition rigoureuse d’un sous-ensemble conservé
+dans le cas multiple, ce cas étant à ma connaissance assez peu étudié. Je présenterai
+ensuite deux versions d’un algorithme de résolution, ainsi que des exemples d’application.
+C’est  dans  le  cadre  de  Travaux  d’Etudes  et  de  Recherches  pour  l’Université  de 
+Strasbourg qu’a été étudié un nouvel algorithme de tri, appelé « tri à bulles gelées ». 
+Afin de comprendre les mécanismes de ce nouvel algorithme, il fallait le décrire avec plus de 
+précision. Pour se donner plusieurs idées de cet algorithme, il est intéressant de le développer 
+de différentes façons, par exemple en itératif ou en récursif. 
+La suite de l’étude consistait à déterminer la complexité de cet algorithme en s’appuyant sur 
+la complexité d’autres algorithmes étant utilisés pour la construction du « tri à bulles gelées ». 
+Dans le but de trouver un intérêt au tri flou, il est intéressant d’étudier d’autres algorithmes de 
+tri en version floue et même d’établir une liste decomparaisons entre tous ces algorithmes. 
+Ceci nous amènera à penser à l’utilité du tri flou pour la recherche.
+L'algorithme, dit du "tri à bulles gelées", utilisecomme base la méthode du tri à bulles, 
+en la modifiant afin que, d'une part, deux valeurs ne soient échangées que si leur écart est 
+supérieur  à  une  certaine  tolérance  t  (une  valeur  choisie  tel  que  si  a  et  b  sont  ordonnés, 
+l’ordre  ne  sera  assuré  que  si  a+t  et  b  sont  aussi  ordonnés),  et  d'autre  part  qu'une  bulle 
+puisse avoir une taille supérieure à 1. 
+Dans le tri à bulles standard, la comparaison se fait entre l’élément de la bulle avec 
+l’élément suivant. Si l’élément de la bulle est plus grand, alors on fait une permutation, 
+sinon l’élément suivant devient la bulle. 
+Dans  un  tri  flou,  l’algorithme  utilisé  comprend  une certaine  tolérance  t.  Soit  S  la 
+relation  d’ordre  considérée,  si  on  a  S(a  ,  b),  on  n’assurera  que  a  et  b  sont  dans  l’ordre 
+après le tri que si on à également S(a+t , b). 
+Afin de rendre l’algorithme du tri à bulles plus rapide, si l’élément après la bulle est 
+égal à l’élément de la bulle, on augmente la taillede la bulle.
+L'algorithme de tri rapide est algorithme de type dichotomique. Son principe consiste à 
+séparer l'ensemble des éléments en deux parties. Pour effectuer la séparation, une valeur 
+pivot est choisie. Les valeurs sont réparties en deux ensembles suivant qu'elles sont plus 
+grandes ou plus petites que le pivot. Ensuite, les  deux ensembles sont triés séparément, 
+suivant  la  même  méthode.  L'algorithme,  est  récursif,  mais  il  n'est  pas  nécessaire  de 
+fusionner  les  deux  ensembles.  Le  résultat  du  tri  est  égal  au  tri  de  l'ensemble  dont  les 
+valeurs sont inférieures au pivot concaténé à l'ensemble des valeurs supérieures au pivot, 
+ce dernier étant entre les deux ensembles.
+Le tri fusion est construit suivant la stratégie  « diviser pour régner ». Le principe de 
+base de la stratégie « diviser pour régner » est que pour résoudre un gros problème, il est 
+souvent plus facile de le diviser en petits problèmes élémentaires. Une fois chaque petit 
+problème  résolu,  il  n'y  a  plus  qu'à  combiner  les  différentes  solutions  pour  résoudre  le 
+problème global. La méthode « diviser pour régner »est tout à fait applicable au problème 
+de tri : plutôt que de trier le tableau complet, ilest préférable de trier deux sous tableaux 
+de taille égale, puis de fusionner les résultats. 
+L'algorithme proposé est récursif. En effet, les deux sous tableaux seront eux même 
+triés à l'aide de l'algorithme de tri fusion. Un tableau ne comportant qu'un seul élément 
+sera considéré comme trié : c'est la condition d'arrêt.
+Le tri par sélection est l'un des tris les plus instinctifs. Le principe est que pour classer 
+n valeurs, il faut rechercher la plus grande valeuret la placer en fin de liste, puis la plus 
+grande valeur dans les valeurs restante et la placer en avant dernière position et ainsi de 
+suite... 
+Considérons  un  tableau  à  n  éléments.  Pour  effectuer le  tri  par  sélection,  il  faut 
+rechercher dans ce tableau la position du plus grand élément. Le plus grand élément est 
+alors échangé avec le dernier  élément du tableau. Ensuite, on réitère l'algorithme sur le 
+tableau  constitué  par  les  (n-p)  premiers  éléments  où  p  est  le  nombre  de  fois  où 
+l'algorithme a été itéré. L'algorithme se termine quand p=(n-1), c'est à dire quand il n'y a 
+plus qu'une valeur à sélectionner, celle ci est alors la plus petite valeur du tableau. 
+La relative simplicité de cet algorithme fait qu'onlui attribut le qualificatif 
+d'algorithme naïf. Cela signifie que même si l'algorithme est correct, il est trop simple 
+pour être réellement efficace. En effet, la complexité, en nombre de comparaisons, est 
+analogue à la complexité du tri bulle optimisé. A la première itération, sont effectuées 
+(n-1) comparaisons. A la pième
+itération, sont effectuées (n-p) comparaisons. Soit une 
+complexité en O(n²) dont le calcul exact est donné par la formule suivante. 
+En  2004-2005,  un  TER  a  été  proposé,  s’intitulant  « Organisation  d'un  répertoire 
+d'images »  (manière  d'organiser  les  images  d'un  répertoire  et  de  les  regrouper  par 
+similarité). Celui-ci s’appuie entre autre sur un tri partiel. Il serait intéressant pour obtenir 
+des résultats convaincants, d’appliquer le « tri à bulles gelées » sur cet exemple. Le choix 
+de la tolérance dépendrait bien évidemment de l’attente de l’utilisateur. La tolérance serait 
+liée  à  la  similarité :  plus  la  tolérance  est  grande moins  forte  est  la  similarité  entre  les
+Les tris les plus performants qui existent tels quele tri rapide et le tri fusion, ne vont 
+pas dépendre de la diversité et de ce fait pour unediversité très grande des éléments à trier, 
+notre  nouvel  algorithme  ce  trouve  être  insatisfaisant.  Mais  si  l’on  regarde  les  résultats  par 
+rapport  au  nombre  d’entrées,  on  remarque  que  notre  algorithme,  le  « tri  à  bulles  gelées » 
+affiche d’excellentes performances. Donc si l’on peut se permettre un tri partiel, dans le cas de 
+grands conteneurs d’éléments à faible diversité, ilest préférable pour des gains de temps non 
+négligeables d’utiliser le nouvel algorithme étudié. On notera aussi que la tolérance a moins 
+de poids sur la complexité du « tri à bulles gelées» que sur les autres algorithmes en version 
+floue étudiés. 
+Une idée d’étude et de recherche dans la théorie des graphes, serait l’utilisation d’un 
+tri flou permettant une approche de la résolution de problèmes NP-complets, tel que le tri des 
+sommets d’un graphe pour la recherche d’un cycle hamiltonien
+données entre elles, afin de déterminer la fonction d’une protéine à partir de sa structure
+chimique ou physique.
+Ces méthodes diffèrent selon la représentation utilisée. Les méthodes de comparaison
+de représentation chimiques sont efficaces lorsque la similarité entre les protéines se
+reflète au niveau de leurs séquences, par exemple lorsque les protéines sont proches évolutivement. La séquence d’une protéine pouvant se déduire de la séquence d’ADN du gène
+correspondant, ce type d’analyse profite de l’accumulation de données en provenance des
+projets de séquençage de génomes complets.
+Le travail réalisé durant cette thèse relève d’une deuxième approche, qui consiste à
+comparer les structures tridimensionnelles (3D) des protéines. La structure 3D d’une protéine étant fortement liée à sa fonction biologique, ce type d’approche permet de détecter
+des similarités plus faibles, non décelables au niveau de la séquence.
+Le nombre de structures de protéines déterminées expérimentalement est lui aussi en
+constante augmentation. En 1960, une première structure était déterminée par diffraction
+de rayons X [Kendrew et al., 1960]. Actuellement, la Protein Data Bank recense plus de
+4500 structures de protéines [Bernstein et al., 1977]. Grâce au perfectionnement des
+méthodes de détermination par diffraction, et à l’utilisation de nouvelles méthodes comme
+la résonnance magnétique nucléaire, le nombre de nouvelles structures publiées chaque
+année est de l’ordre de 500. Si les premières comparaisons étaient effectuées visuellement,
+un tel volume de données nécessite désormais la mise en œuvre d’outils informatiques
+performants.
+Un des problèmes auxquels je me suis intéressé durant ce travail est la détection de
+sous-structures communes à plusieurs protéines, c’est-à-dire l’identification au sein de ces
+protéines de sous-ensembles d’atomes ayant les mêmes positions relatives dans l’espace.
+Dans son principe, cette méthode d’analyse est semblable à la recherche de facteurs communs à un ensemble de séquences, ou plus généralement à la recherche de régularités dans
+des séquences. La structure tridimensionnelle d’une protéine, et plus généralement d’une
+molécule, peut être représentée par un ensemble de points dans l’espace à trois dimensions
+. Il suffit en effet d’associer à chaque atome un point dont les coordonnées sont celles
+du “centre” de l’atome. On se ramène ainsi au problème de la comparaison d’ensembles
+de points dans un espace euclidien, problème très étudié dans le domaine de la vision artificielle et de l’analyse d’images.
+On peut utiliser la théorie des champs de force pour décrire une molécule. On calcule
+un potentiel dérivant d’un champ de force permettant de mesurer en chaque point l’interaction de la molécule avec son environnement. L’étude et la comparaison des potentiels
+d’interaction de plusieurs molécules permet alors de détecter certains types de similarités
+fondées sur des critères d’énergie, et non plus uniquement sur la disposition spatiale des
+atomes formant la molécule. Ce problème est beaucoup moins étudié que le précédent,
+mais nous verrons qu’il peut lui aussi se ramener à la comparaison géométrique d’ensembles de points dans l’espace, en décrivant la forme du potentiel d’interaction par un
+ensemble de points caractéristiques.
+Un troisième problème lié à la structure des protéines concerne l’analyse des différentes conformations d’un même polypeptide. En effet, du fait de la possibilité de rotation
+autour de certaines liaisons, des mouvements internes faisant intervenir plusieurs atomes
+peuvent se produire. Certains de ces mouvements jouent un rôle très important dans le
+comparaison de plusieurs conformations d’une même protéine, afin de déterminer les
+sous-structures conservées, c’est-à-dire les sous-ensembles d’atomes dont les positions
+relatives restent identiques dans les différentes conformations, ou inversement d’accéder
+aux zones “mobiles” de la molécule.
+Ce texte est divisé en cinq chapitres. Le premier est une introduction générale aux protéines. Y sont présentées les différentes façons de décrire les protéines, ainsi que leurs
+principales caractéristiques. Ce chapitre n’a bien sûr pas pour but d’être exhaustif, mais
+plutôt de donner une motivation “biologique” aux travaux que j’ai effectués, en décrivant
+les différents problèmes abordés suivant le point de vue d’un utilisateur.
+Le second chapitre est consacré à la présentation de différentes méthodes permettant
+de comparer deux ensembles de points. On s’attachera dans un premier temps à donner un
+énoncé précis et rigoureux des problèmes qui nous intéressent. Ces énoncés sont fondés
+sur une définition de la similarité géométrique entre deux ensembles de points dans un
+espace euclidien. Trois types de définitions sont proposés, conduisant à des méthodes de
+résolution différentes. On étudiera aussi le nombre de solutions des problèmes considérés,
+et l’on verra que ce nombre dépend lui aussi de la définition de similarité choisie. Deux
+problèmes sont considérés: la comparaison globale, où l’on cherche à déterminer si deux
+ensembles sont similaires, et la comparaison locale, où l’on cherche des sous-ensembles
+similaires au sein des deux ensembles de départ.
+Dans le troisième chapitre, je présenterai des méthodes développées spécifiquement
+pour la comparaison de protéines. De portée moins générale que les algorithmes présentés
+au chapitre précédent, elles introduisent de nouvelles contraintes dans les énoncés des problèmes, ou bien utilisent une description de la structure protéique plus compacte mais
+moins précise qu’une description par un ensemble de points. Ces méthodes de comparaison reposent le plus souvent sur des définitions beaucoup moins formelles que celle
+employées au chapitre précédent, et font intervenir certains paramètres dont les valeurs
+sont déterminées de façon empirique.
+Les deux derniers chapitres sont consacrés au travaux que j’ai effectués durant cette
+thèse. Dans le chapitre 4, je présenterai un nouvel algorithme de recherche de sous-ensembles communs à deux ensembles de points dans un espace euclidien, ainsi que son extension à la comparaison multiple, c’est-à-dire la comparaison simultanée de plus de deux
+ensembles [Escalier et al., 1997]. On se base sur le formalisme introduit au chapitre 2, qui
+est généralisé afin de pouvoir s’appliquer au cas de la comparaison multiple. Cette nouvelle méthode est comparée à certains algorithmes présentés dans le chapitre 2, et quelques exemples d’application portant sur la comparaison de structures 3D de protéines
+seront détaillés. On décrira aussi une application à la comparaison des potentiels d’interaction, basée sur une nouvelle description de ces potentiels par un ensemble de points caractéristiques.
+Enfin, le cinquième chapitre présente une nouvelle méthode d’analyse des différentes
+conformations d’un même ensemble de points [Escalier et Viari, 1997]. On se place
+d’emblée dans un cadre multiple, où l’on dispose de plus de deux conformations. Je
+m’attacherai tout d’abord à donner une définition rigoureuse d’un sous-ensemble conservé
+dans le cas multiple, ce cas étant à ma connaissance assez peu étudié. Je présenterai
+ensuite deux versions d’un algorithme de résolution, ainsi que des exemples d’application.
